@@ -1,4 +1,4 @@
-map
+Map
 ===
 
-Just a map. http://lxbarth.com/map
+http://lxbarth.com/map
