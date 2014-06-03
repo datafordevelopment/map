@@ -32,9 +32,10 @@
 <body>
 <div id='map'></div>
 <script>
-var map = L.mapbox.map('map', 'lxbarth.map-lxoorpwz')
+var map = L.mapbox.map('map')
     .setView([40, -74.50], 9)
-    .addControl(L.mapbox.geocoderControl('examples.map-vyofok3q'));
+    .addLayer(L.mapbox.tileLayer('lxbarth.ha6a8a17', {detectRetina: true}))
+    .addControl(L.mapbox.geocoderControl('lxbarth.map-lxoorpwz'));
 L.control.locate().addTo(map);
 L.hash(map);
 </script>
