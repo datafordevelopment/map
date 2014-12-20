@@ -36,7 +36,9 @@ L.mapbox.accessToken = 'pk.eyJ1IjoibHhiYXJ0aCIsImEiOiJFVXdYcUlvIn0.bbaHTEWlnAwGg
 var map = L.mapbox.map('map')
     .setView([40, -74.50], 9)
     .addLayer(L.mapbox.tileLayer('lxbarth.i6fgdd0o', {detectRetina: true}))
-    .addControl(L.mapbox.geocoderControl('lxbarth.i6fgdd0o'));
+    .addControl(L.mapbox.geocoderControl('mapbox.places-v1', {
+            autocomplete: true
+        }));
 L.control.locate().addTo(map);
 L.hash(map);
 </script>
