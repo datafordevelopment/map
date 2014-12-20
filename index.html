@@ -5,8 +5,8 @@
 <title>Map</title>
 
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-<script src='http://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
-<link href='http://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+<script src='http://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+<link href='http://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
 <script src='http://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js'></script>
 <link href='http://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css' rel='stylesheet' />
 <!--[if lt IE 9]>
@@ -32,10 +32,11 @@
 <body>
 <div id='map'></div>
 <script>
+L.mapbox.accessToken = 'pk.eyJ1IjoibHhiYXJ0aCIsImEiOiJFVXdYcUlvIn0.bbaHTEWlnAwGgyVwJngMdQ';
 var map = L.mapbox.map('map')
     .setView([40, -74.50], 9)
-    .addLayer(L.mapbox.tileLayer('lxbarth.ha6a8a17', {detectRetina: true}))
-    .addControl(L.mapbox.geocoderControl('lxbarth.map-lxoorpwz'));
+    .addLayer(L.mapbox.tileLayer('lxbarth.i6fgdd0o', {detectRetina: true}))
+    .addControl(L.mapbox.geocoderControl('lxbarth.i6fgdd0o'));
 L.control.locate().addTo(map);
 L.hash(map);
 </script>
