@@ -35,10 +35,16 @@
 L.mapbox.accessToken = 'pk.eyJ1IjoibHhiYXJ0aCIsImEiOiJFVXdYcUlvIn0.bbaHTEWlnAwGgyVwJngMdQ';
 var map = L.mapbox.map('map')
     .setView([40, -74.50], 9)
-    .addLayer(L.mapbox.tileLayer('lxbarth.i6fgdd0o', {detectRetina: true}))
     .addControl(L.mapbox.geocoderControl('mapbox.places-v1', {
             autocomplete: true
         }));
+var layers = {
+    Streets: L.mapbox.tileLayer('lxbarth.i6fgdd0o'),
+    Satellite: L.mapbox.tileLayer('lxbarth.map-n8gsdqn4')
+};
+
+layers.Streets.addTo(map);
+L.control.layers(layers).addTo(map);
 L.control.locate().addTo(map);
 L.hash(map);
 </script>
