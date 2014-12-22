@@ -42,7 +42,6 @@ var layers = {
     Streets: L.mapbox.tileLayer('lxbarth.i6fgdd0o'),
     Satellite: L.mapbox.tileLayer('lxbarth.map-n8gsdqn4')
 };
-
 layers.Streets.addTo(map);
 L.control.layers(layers).addTo(map);
 L.control.locate().addTo(map);
