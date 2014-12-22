@@ -33,14 +33,14 @@
 <div id='map'></div>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoibHhiYXJ0aCIsImEiOiJFVXdYcUlvIn0.bbaHTEWlnAwGgyVwJngMdQ';
-var map = L.mapbox.map('map', null, {zoomControl: false})
-    .setView([40, -74.50], 9)
-    .addControl(L.mapbox.geocoderControl('mapbox.places-v1', {
-        autocomplete: true
-    }))
-    .addControl(L.control.zoom({position: 'topright'}))
-    .addControl(L.control.locate())
-    .addControl(L.mapbox.shareControl());
+var mapIDs = {
+    Streets: 'lxbarth.i6fgdd0o',
+    Satellite: 'lxbarth.map-n8gsdqn4'
+};
+var layers = {};
+Object.keys(mapIDs).forEach(function(k) {
+    layers[k] = L.mapbox.tileLayer(mapIDs[k]);
+});
 var search = (function() {
     var result = {};
     var elems = location.search.substr(1).split('&');
@@ -52,11 +52,17 @@ var search = (function() {
     }
     return result;
 })();
-var layers = {
-    Streets: L.mapbox.tileLayer('lxbarth.i6fgdd0o'),
-    Satellite: L.mapbox.tileLayer('lxbarth.map-n8gsdqn4')
-};
-layers[search['layer'] || 'Streets'].addTo(map);
+var active = search['layer'] || 'Streets';
+
+var map = L.mapbox.map('map', null, {zoomControl: false})
+    .setView([40, -74.50], 9)
+    .addControl(L.mapbox.geocoderControl('mapbox.places-v1', {
+        autocomplete: true
+    }))
+    .addControl(L.control.zoom({position: 'topright'}))
+    .addControl(L.control.locate())
+    .addControl(L.mapbox.shareControl(mapIDs[active]));
+layers[active].addTo(map);
 L.control.layers(layers).addTo(map);
 L.hash(map);
 map.on('baselayerchange', function(e) {
