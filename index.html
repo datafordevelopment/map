@@ -67,8 +67,8 @@ layers[active].addTo(map);
 L.hash(map);
 map.on('baselayerchange', function(e) {
     var s = 'layer=' + e.name;
-    if (history.pushState) {
-        history.pushState(null, null, [location.origin, '/?', s, location.hash].join(''));
+    if (history.replaceState) {
+        history.replaceState(null, null, [location.origin, '/?', s, location.hash].join(''));
     } else {
         location.search = s;
     }
