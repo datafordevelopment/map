@@ -62,11 +62,16 @@ var map = L.mapbox.map('map', null, {zoomControl: false})
     .addControl(L.control.zoom({position: 'topright'}))
     .addControl(L.control.locate())
     .addControl(L.mapbox.shareControl(mapIDs[active]));
-L.control.layers(layers).addTo(map);    
+L.control.layers(layers).addTo(map);
 layers[active].addTo(map);
 L.hash(map);
 map.on('baselayerchange', function(e) {
-    location.search = 'layer=' + e.name;
+    var s = 'layer=' + e.name;
+    if (history.pushState) {
+        history.pushState(null, null, [location.origin, '/?', s, location.hash].join(''));
+    } else {
+        location.search = s;
+    }
 });
 
 </script>
