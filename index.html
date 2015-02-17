@@ -62,8 +62,8 @@ var map = L.mapbox.map('map', null, {zoomControl: false})
     .addControl(L.control.zoom({position: 'topright'}))
     .addControl(L.control.locate())
     .addControl(L.mapbox.shareControl(mapIDs[active]));
+L.control.layers(layers).addTo(map);    
 layers[active].addTo(map);
-L.control.layers(layers).addTo(map);
 L.hash(map);
 map.on('baselayerchange', function(e) {
     location.search = 'layer=' + e.name;
