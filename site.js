@@ -23,7 +23,7 @@
 
     var map = L.mapbox.map('map', null, {zoomControl: false})
         .setView([40, -74.50], 9)
-        .addControl(L.mapbox.geocoderControl('mapbox.places-v1', {
+        .addControl(L.mapbox.geocoderControl('mapbox.places', {
             autocomplete: true
         }))
         .addControl(L.control.zoom({position: 'topright'}))
