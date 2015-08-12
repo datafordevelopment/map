@@ -22,16 +22,17 @@
     var active = search['layer'] || 'Streets';
 
     var map = L.mapbox.map('map', null, {zoomControl: false})
-        .setView([40, -74.50], 9)
+        .setView([20, 0], 3)
         .addControl(L.mapbox.geocoderControl('mapbox.places', {
             autocomplete: true
         }))
         .addControl(L.control.zoom({position: 'topright'}))
-        .addControl(L.control.locate())
         .addControl(L.mapbox.shareControl(mapIDs[active]));
     L.control.layers(layers).addTo(map);
     layers[active].addTo(map);
     L.hash(map);
+    var lc = L.control.locate().addTo(map);
+    !location.hash && lc.locate();
     map.on('baselayerchange', function(e) {
         var s = 'layer=' + e.name;
         if (history.replaceState) {
