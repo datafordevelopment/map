@@ -1,7 +1,7 @@
 (function() {
     L.mapbox.accessToken = 'pk.eyJ1IjoibHhiYXJ0aCIsImEiOiJFVXdYcUlvIn0.bbaHTEWlnAwGgyVwJngMdQ';
     var mapIDs = {
-        Streets: 'lxbarth.map-lxoorpwz',
+        Streets: 'lxbarth.mo5k9cn2',
         Satellite: 'lxbarth.map-n8gsdqn4'
     };
     var layers = {};
@@ -36,7 +36,7 @@
     map.on('baselayerchange', function(e) {
         var s = 'layer=' + e.name;
         if (history.replaceState) {
-            history.replaceState(null, null, [location.origin, '/?', s, location.hash].join(''));
+            history.replaceState(null, null, [location.origin, '/map/?', s, location.hash].join(''));
         } else {
             location.search = s;
         }
