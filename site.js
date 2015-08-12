@@ -27,7 +27,8 @@
             autocomplete: true
         }))
         .addControl(L.control.zoom({position: 'topright'}))
-        .addControl(L.mapbox.shareControl(mapIDs[active]));
+        .addControl(L.mapbox.shareControl(mapIDs[active]))
+        .addControl(L.control.scale());
     L.control.layers(layers).addTo(map);
     layers[active].addTo(map);
     L.hash(map);
